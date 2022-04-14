@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ditto-jup:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/root/work
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            capabilities: [gpu]
