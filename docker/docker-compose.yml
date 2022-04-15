@@ -1,0 +1,31 @@
+version: "2.4"
+
+################################################################################
+
+services:
+  ditto:
+    hostname: ditto
+    runtime: nvidia
+    privileged: true
+    environment:
+      # Display X Server GUI.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      # Configure Nvidia Docker interface.
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_REQUIRE_CUDA=cuda>=11.0
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      # Map repository sources.
+      - ../Ditto:/root/catkin_ws/src/Ditto
+      # - ../intera.sh:/root/catkin_ws/intera.sh
+      - ./scripts:/root/scripts
+      # Grant display access to X Server.
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    command: ./scripts/initialize-docker-container.sh
