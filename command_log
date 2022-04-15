@@ -1,52 +1,19 @@
-    1  ls
     2  cd catkin_ws/
-    3  ls
     4  cd src/
-    5  ls
     6  cd Ditto
-    7  ls
     8  nvcc -V
     9  nvidia-smi
-   10  ls
-   11  pip --version
    12  pip install pytorch==1.10.2=py3.8_cuda11.3_cudnn8.2.0_0
    13  pip install pytorch=1.10.2=py3.8_cuda11.3_cudnn8.2.0_0
    14  pip install pytorch
    15  pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
    16  pip install -r requirements.txt 
-   17  python run.py experiment=Ditto_s2m
-   18  python3 run.py experiment=Ditto_s2m
-   19  pip install torch_scatter
-   20  pip list | grep torch
-   21  pip install torch-scatter -f https://data.pyg.org/whl/torch-1.11.0+${CUDA}.html
-   22  pip install torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+${CUDA}.html
-   23  echo $CUDA
-   24  pip install torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
-   25  python3 run.py experiment=Ditto_s2m
-   26  ls
-   27  pip list |torch
-   28  pip list |grep torch
    29  pip uninstall torch-scatter
    30  pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.11.0+cu113.html
-   31  python3 run.py experiment=Ditto_s2m
-   32  python3
-   33  ls
-   34  python3 scripts/convonet_setup.py build_ext --inplace
-   35  apt-get install python3-devel
-   36  apt-get install python3-dev
-   37  sudo apt-get install python3-dev
-   38  apt-get install python3-ev
-   39  apt-get install python3-dev
    40  apt-get update
    41  apt-get install python3-dev
    42  python3 scripts/convonet_setup.py build_ext --inplace
-   43  python3 run.py experiment=Ditto_s2m
-   44  ls
-   45  python3 run.py experiment=Ditto_s2m
-   46  screen 
    47  export CUDA_VISIBLE_DEVICES=1
-   48  screen python3 run.py experiment=Ditto_s2m
    49  apt-get install screen
    50  screen python3 run.py experiment=Ditto_s2m
    51  exit
-   52  history
