@@ -1,0 +1,198 @@
+1  jl
+    2  ls
+    3  jl
+    4  exit
+    5  pip install open3d
+    6  pip3 install --ignore-installed PyYAML
+    7  pip install open3d
+    8  pip install ipympl
+    9  pip list |grep jupy
+   10  pip install nodejs
+   11  jupyter labextension install @jupyter-widgets/jupyterlab-manager
+   12  pip install npm
+   13  jupyter labextension install @jupyter-widgets/jupyterlab-manager
+   14  ls
+   15  cd work/
+   16  ls
+   17  touch a.py
+   18  vim a.py 
+   19  chmod +x a.py 
+   20  python a.py 
+   21  python3 a.py 
+   22  vim a.py 
+   23  python3 a.py 
+   24  cd ../
+   25  ls
+   26  cd Ditto/notebooks/
+   27  ls
+   28  python3 ../../work/a.py 
+   29  apt-get ijnstall python3-tk
+   30  apt-get install python3-tk
+   31  apt-get-update
+   32  apt-get update
+   33  apt-get install python3-tk
+   34  pip install pyqt5
+   35  python3 ../../work/a.py 
+   36  vim ../../work/a.py 
+   37  python3 ../../work/a.py 
+   38  vim ../../work/a.py 
+   39  python3 ../../work/a.py 
+   40  vim ../../work/a.py 
+   41  python3 ../../work/a.py 
+   42  vim ../../work/a.py 
+   43  python3 ../../work/a.py 
+   44  vim ../../work/a.py 
+   45  python3 ../../work/a.py 
+   46  vim ../../work/a.py 
+   47  python3 ../../work/a.py 
+   48  vim ../../work/a.py 
+   49  python3 ../../work/a.py 
+   50  pip install hydra-core --upgrade
+   51  python3 ../../work/a.py 
+   52  pip install trimesh
+   53  python3 ../../work/a.py 
+   54  pip install pykdtree
+   55  python3 ../../work/a.py 
+   56  apt-get update
+   57  apt-get install python3-dev
+   58  python3 ../../work/a.py 
+   59  cd ../
+   60  ls
+   61  cd ls
+   62  cd assets/
+   63  ls
+   64  cd ../
+   65  ls
+   66  cd configs/
+   67  ls
+   68  cd ../
+   69  ls
+   70  python3 scripts/convonet_setup.py build_ext --inplace
+   71  pip install Cython
+   72  python3 scripts/convonet_setup.py build_ext --inplace
+   73  python3 ../../work/a.py 
+   74  cd notebooks/
+   75  python3 ../../work/a.py 
+   76  touch b.py
+   77  vim b.py 
+   78  chmod +x b.py 
+   79  python3 b.py 
+   80  export PYTHONPATH=${PYTHPNPATH}:/root/Ditto/
+   81  python3 b.py 
+   82  n
+   83  nn
+   84  n
+   85  cd ../
+   86  python run.py experiment=Ditto_s2m
+   87  python3 run.py experiment=Ditto_s2m
+   88  export HYDRA_FULL_ERROR=1
+   89  python3 run.py experiment=Ditto_s2m
+   90  pip list |grep hydra
+   91  pip uninstall hydra-core
+   92  pip install hydra
+   93  pip list |grep hydra
+   94  pip uninstall hydra
+   95  pip install hydra-core==1.1.0rc1 hydra-colorlog==1.1.0.dev1 hydra-optuna-sweeper==1.1.0.dev2
+   96  pip uninstall tensorflow
+   97  pip install hydra-core==1.1.0rc1 hydra-colorlog==1.1.0.dev1 hydra-optuna-sweeper==1.1.0.dev2
+   98  python3 run.py experiment=Ditto_s2m
+   99  pip install pytorch_lightning==1.5.4
+  100  python3 run.py experiment=Ditto_s2m
+  101  pip install setuptools
+  102  pip install setuptools==59.5.0
+  103  pip list |grep jupyter-
+  104  pip uninstall jupyter-packaging
+  105  pip install setuptools==59.5.0
+  106  pip install jupyter-packaging
+  107  python3 run.py experiment=Ditto_s2m
+  108  pip install setuptools==58.2.0
+  109  pip uninstall jupyter-packaging
+  110  pip uninstall setuptools
+  111  pip install setuptools==58.2.0
+  112  pip install jupyter-packaging
+  113  pip uninstall setuptools
+  114  pip install setuptools==58.2.0
+  115  python3 run.py experiment=Ditto_s2m
+  116  pip install rich
+  117  python3 run.py experiment=Ditto_s2m
+  118  pip install wandb
+  119  python3 run.py experiment=Ditto_s2m
+  120  echo PYTHONPATH
+  121  echo $PYTHONPATH
+  122  pip install git+https://github.com/PytorchLightning/metrics.git@master
+  123  python3 run.py experiment=Ditto_s2m
+  124  export PYTHONPATH=${PYTHONPATH}:/usr/local/lib/python3.8/dist-packages/
+  125  python3 run.py experiment=Ditto_s2m
+  126  pip list |grep torch
+  127  pip uninstall torchmetrics
+  128  pip install torchmetrics==0.4.1
+  129  python3 run.py experiment=Ditto_s2m
+  130  ls
+  131  cd build/
+  132  ls
+  133  sudo mv lib.linux-x86_64-cpython-38/ ../../
+  134  m temp.linux-x86_64-cpython-38/ ../../
+  135  mv temp.linux-x86_64-cpython-38/ ../../
+  136  cd ../
+  137  python3 run.py experiment=Ditto_s2m
+  138  echo $PYTHONPATH
+  139  export PYTHONPATH=/root/Ditto/build/:/usr/local/lib/python3.8/dist-packages/
+  140  python3 run.py experiment=Ditto_s2m
+  141  pip list
+  142  pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+  143  pip uninstall torch torchvision torchaudio
+  144  pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+  145  python3 run.py experiment=Ditto_s2m
+  146  cd notebooks/
+  147  python3 b.py 
+  148  export PYTHONPATH=${PYTHONPATH}:/root/Ditto/
+  149  python3 b.py 
+  150  ls
+  151  python3 comp.py 
+  152  pip install https://github.com/Steve-Tod/utils3d --upgrade
+  153  cd ../
+  154  ls
+  155  git clone https://github.com/Steve-Tod/utils3d.git
+  156  cd utils3d/
+  157  pip install -e .
+  158  echo $PYTHONPATH
+  159  cd ../notebooks/
+  160  ls
+  161  python comp.py 
+  162  python3 comp.py 
+  163  export PYTHONPATH=${PYTHONPATH}:/root/Ditto/utils3d/
+  164  python3 comp.py 
+  165  apt-get install libosmesa6-dev freeglut3-dev
+  166  python3 comp.py 
+  167  python3
+  168  apt-get install freeglut3-dev
+  169  pip list |grep pyrender
+  170  apt-get install libglfw3-dev libgles2-mesa-dev
+  171  python3
+  172  python3 comp.py 
+  173  apt-get list
+  174  apt-get apt list --installed
+  175  apt list --installed
+  176  apt list --installed |grep mesa
+  177  apt list --installed |grep gl
+  178  apt list --installed |grep egl
+  179  export EGL_DEVICE_ID=1
+  180  python3 comp.py 
+  181  xeyes
+  182  xeye
+  183  python3 b.py 
+  184  echo $DISPLAY
+  185  python3 ../../work/a.py 
+  186  ls
+  187  python3 comp.py 
+  188  ls
+  189  nvidia-smi
+  190  nvcc -V
+  191  echo $EGL_DEVICE_ID
+  192  export EGL_DEVICE_ID=0
+  193  python3 comp.py 
+  194  pip list |grep pyrend
+  195  python3 comp.py 
+  196  nvidia-smi
+  197  history
+

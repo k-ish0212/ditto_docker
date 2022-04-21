@@ -1,6 +1,6 @@
 # TensorFlow (from [3]) ----------------
 ARG UBUNTU_VERSION=20.04
-
+ARG B=1
 ARG ARCH=
 ARG CUDA=11.3
 FROM nvidia/cuda${ARCH:+-$ARCH}:${CUDA}.0-base-ubuntu${UBUNTU_VERSION} as base
@@ -19,32 +19,108 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Needed for string substitution
 SHELL ["/bin/bash", "-c"]
 
-RUN apt-get update
-RUN apt-get install -y python3 python3-pip
+# RUN apt-get update
+# RUN apt-get install -y python3 python3-pip
 
-RUN pip3 install jupyter
-RUN pip3 install numpy pandas
-RUN pip3 install torch torchvision
+# RUN pip3 install jupyter
+# RUN pip3 install numpy pandas
+# RUN pip3 install torch torchvision
 
-ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
+# ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        cuda-command-line-tools-${CUDA/./-} \
+        libcublas-${CUDA/./-} \
+        cuda-nvrtc-${CUDA/./-} \
+        libcufft-${CUDA/./-} \
+        libcurand-${CUDA/./-} \
+        libcusolver-${CUDA/./-} \
+        libcusparse-${CUDA/./-} \
+        curl \
+        libfreetype6-dev \
+        libhdf5-serial-dev \
+        libzmq3-dev \
+        pkg-config \
+        software-properties-common \
+        unzip \
+        wget \
+        git \
+        vim \
+        python3-pip \
+        lsb-release \
+        gnupg \
+        avahi-autoipd \
+        avahi-daemon \
+        avahi-utils
+
+# For CUDA profiling, TensorFlow requires CUPTI.
+ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+# Link the libcuda stub to the location where tensorflow is searching for it and reconfigure
+# dynamic linker run-time bindings
+RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 \
+    && echo "/usr/local/cuda/lib64/stubs" > /etc/ld.so.conf.d/z-cuda-stubs.conf \
+    && ldconfig
+
+RUN apt-get update && apt-get install -y \
+    wget git
+SHELL ["/bin/bash", "-c"]
+
+# pyenv (from [2]) ----------------
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+    libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+
+
+# X window ----------------
+RUN apt-get update && apt-get install -y \
+    xvfb x11vnc python-opengl icewm
+RUN echo 'alias vnc="export DISPLAY=:0; Xvfb :0 -screen 0 1400x900x24 &; x11vnc -display :0 -forever -noxdamage > /dev/null 2>&1 &; icewm-session &"' >> /root/.bashrc
+
+# Copy the helper scripts to the working directory.
+COPY ./docker/scripts/. /root/scripts/
+RUN chmod -R +x /root/scripts/*
+
+# DL libraries and jupyter ----------------
+RUN source /root/.bashrc && \
+    pip install setuptools jupyterlab && \
+    pip install tensorflow && \
+    pip install pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html && \
+    echo 'alias jl="jupyter lab --ip 0.0.0.0 --port 8888 --NotebookApp.token='' --allow-root &"' >> /root/.zshrc && \
+    echo 'alias tb="tensorboard --host 0.0.0.0 --port 6006 --logdir runs &"' >> /root/.zshrc
+
+# utils ----------------
+RUN apt-get update && apt-get install -y \
+    vim
+
+# Setup the Bash shell environment with '/root/.bashrc'.
+RUN echo "source /root/scripts/initialize-bash-shell.sh" >> /root/.bashrc
+
+# Force color prompt in terminal.
+RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/' /root/.bashrc
+
+
+RUN pip install --upgrade pip
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# JupyterNotebookのパスワード
+RUN mkdir $HOME/.jupyter
+COPY jupyter_notebook_config.py $HOME/.jupyter/
+ENV PASSWORD password
+
+# ENV PYTHONPATH=/usr/lib/python3/dist-packages
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir "/root/work"
-WORKDIR "/root/work"
+WORKDIR "/root"
 
-CMD ["jupyter", "notebook", "--ip=*", "--no-browser"]
+ENTRYPOINT []
 
+CMD ["/bin/bash"]
 
-# ARG NB_USER="ditto"
-# ARG NB_UID="1000"
-
-
-
-# RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su
-# RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
-
-# USER $NB_UID
-# RUN mkdir "/home/$NB_USER/work"
-
-# WORKDIR "/home/$NB_USER/work"
-
-# CMD ["jupyter", "notebook", "--ip=*", "--no-browser"]
