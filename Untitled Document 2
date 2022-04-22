@@ -1,0 +1,74 @@
+    1  ls
+    2  cd Ditto/
+    3  python3 run.py experiment=Ditto_s2m
+    4  pip install hydra-core==1.1.0rc1 hydra-colorlog==1.1.0.dev1 hydra-optuna-sweeper==1.1.0.dev2
+    5  python3 run.py experiment=Ditto_s2m
+    6  pip install git+https://github.com/PytorchLightning/metrics.git@master
+    7  python3 run.py experiment=Ditto_s2m
+    8  echo $PYTHONPATH
+    9  export PYTHONPATH=/root/Ditto/build/:/usr/local/lib/python3.8/dist-packages/
+   10  python3 run.py experiment=Ditto_s2m
+   11  export PYTHONPATH=${PYTHONPATH}:/root/Ditto/
+   12  python3 run.py experiment=Ditto_s2m
+   13  pip list |grep torch
+   14  ls
+   15  pip install pytorch-lightning
+   16  python3 run.py experiment=Ditto_s2m
+   17  pip install pytorch_lightning==1.5.4
+   18  python3 run.py experiment=Ditto_s2m
+   19  pip install rich
+   20  pip install wandb
+   21  python3 run.py experiment=Ditto_s2m
+   22  pip install trimesh pykdtree
+   23  python3 run.py experiment=Ditto_s2m
+   24  apt-get update
+   25  apt-get install python3-dev
+   26  python3 run.py experiment=Ditto_s2m
+   27  pip list |grep torch
+   28  nvcc -V
+   29  pip uninstall torch torchmetrics torchvision torchaudio
+   30  pip install torch==1.11.0+cu113 torchaudio==0.11.0+cu113 torchmetrics==0.4.1 torchvision==0.12.0+cu113
+   31  pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+   32  pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+   33  pip install torchmetrics==0.4.1
+   34  python3 run.py experiment=Ditto_s2m
+   35  pip install torch-scatter==2.0.9
+   36  pip install torch-scatter
+   37  pip list |grep torch
+   38  pip install torch-geometric==2.0.4
+   39  pip install torch-scatter
+   40  pip install torch-cluster==1.6.0
+   41  pip install torch-scatter -f https://data.pyg.org/whl/torch-1.11.0+cpu.html
+   42  pip list |grep torch
+   43  python3 run.py experiment=Ditto_s2m
+   44  pip uninstall torch-scatter
+   45  pip install torch-scatter -f https://data.pyg.org/whl/torch-1.11.0+cu113.html
+   46  python3 run.py experiment=Ditto_s2m
+   47  cd notebooks/
+   48  ls
+   49  chmod c.py 
+   50  chmod +x c.py 
+   51  python3 c.py 
+   52  pip install opne3d
+   53  pip install open3d
+   54  pip install --ignore-installed PyYAML
+   55  pip install open3d
+   56  python3 c.py 
+   57  apt-get install xeyes
+   58  apt-get install x11-apps
+   59  xeyes
+   60  pip install open3d
+   61  python3 c.py 
+   62  cd ../
+   63  git clone https://github.com/Steve-Tod/utils3d.git
+   64  cd utils3d/
+   65  pip install -e .
+   66  cd ../notebooks/
+   67  export PYTHONPATH=${PYTHONPATH}:/root/Ditto/utils3d/
+   68  python3 c.py 
+   69  pip install tkinter
+   70  python3 c.py 
+   71  pip install PyOpenGL-accelerate
+   72  python3 c.py 
+   73  history
+
