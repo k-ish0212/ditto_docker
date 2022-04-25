@@ -131,7 +131,7 @@ RUN pip install --no-dependencies numpy==1.22.3
 
 
 
-ENV PYTHONPATH=/root/Ditto/build/:/usr/local/lib/python3.8/dist-packages/:/root/Ditto/:/root/Ditto/utils3d/
+ENV PYTHONPATH "/root/Ditto/build/:/usr/local/lib/python3.8/dist-packages/:/root/Ditto/utils3d/"
 
 
 RUN apt-get clean && \
