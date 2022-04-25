@@ -1,0 +1,19 @@
+    2  cd catkin_ws/
+    4  cd src/
+    6  cd Ditto
+    8  nvcc -V
+    9  nvidia-smi
+   12  pip install pytorch==1.10.2=py3.8_cuda11.3_cudnn8.2.0_0
+   13  pip install pytorch=1.10.2=py3.8_cuda11.3_cudnn8.2.0_0
+   14  pip install pytorch
+   15  pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+   16  pip install -r requirements.txt 
+   29  pip uninstall torch-scatter
+   30  pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.11.0+cu113.html
+   40  apt-get update
+   41  apt-get install python3-dev
+   42  python3 scripts/convonet_setup.py build_ext --inplace
+   47  export CUDA_VISIBLE_DEVICES=1
+   49  apt-get install screen
+   50  screen python3 run.py experiment=Ditto_s2m
+   51  exit

@@ -4,6 +4,7 @@ ARG B=1
 ARG ARCH=
 ARG CUDA=11.3
 FROM nvidia/cudagl:${CUDA}.0-base-ubuntu${UBUNTU_VERSION} as base
+
 # ARCH and CUDA are specified again because the FROM directive resets ARGs
 # (but their default value is retained if set previously)
 ARG ARCH
@@ -54,6 +55,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         avahi-daemon \
         avahi-utils
 
+
 # For CUDA profiling, TensorFlow requires CUPTI.
 ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
@@ -73,8 +75,6 @@ RUN apt-get update && apt-get install -y \
     build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
     libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
-
-
 # X window ----------------
 RUN apt-get update && apt-get install -y \
     xvfb x11vnc python-opengl icewm
@@ -143,4 +143,3 @@ WORKDIR "/root"
 ENTRYPOINT []
 
 CMD ["/bin/bash"]
-
