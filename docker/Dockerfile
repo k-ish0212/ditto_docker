@@ -88,13 +88,13 @@ RUN chmod -R +x /root/scripts/*
 RUN source /root/.bashrc && \
     pip install setuptools jupyterlab && \
     pip install tensorflow && \
-    pip install pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html && \
-    echo 'alias jl="jupyter lab --ip 0.0.0.0 --port 8888 --NotebookApp.token='' --allow-root &"' >> /root/.zshrc && \
-    echo 'alias tb="tensorboard --host 0.0.0.0 --port 6006 --logdir runs &"' >> /root/.zshrc
-
+    echo 'alias jl="jupyter lab --ip 0.0.0.0 --port 8888 --NotebookApp.token='' --allow-root &"' >> /root/.bashrc && \
+    echo 'alias tb="tensorboard --host 0.0.0.0 --port 6006 --logdir runs &"' >> /root/.bashrc
+# pip install pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html && \
+    
 # utils ----------------
 RUN apt-get update && apt-get install -y \
-    vim
+    vim python3-dev
 
 # Setup the Bash shell environment with '/root/.bashrc'.
 RUN echo "source /root/scripts/initialize-bash-shell.sh" >> /root/.bashrc
@@ -102,17 +102,37 @@ RUN echo "source /root/scripts/initialize-bash-shell.sh" >> /root/.bashrc
 # Force color prompt in terminal.
 RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/' /root/.bashrc
 
-
-RUN pip install --upgrade pip
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
 # JupyterNotebookのパスワード
 RUN mkdir $HOME/.jupyter
 COPY jupyter_notebook_config.py $HOME/.jupyter/
 ENV PASSWORD password
 
-# ENV PYTHONPATH=/usr/lib/python3/dist-packages
+
+# install utils3d
+RUN mkdir -p /root/Ditto
+RUN cd "/root/Ditto" && \
+    git clone https://github.com/Steve-Tod/utils3d.git && \
+    cd utils3d/ && \
+    pip install -e .
+
+
+RUN pip install --upgrade pip
+
+RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+RUN pip install torch-scatter -f https://data.pyg.org/whl/torch-1.11.0+cu113.html
+
+COPY requirements.txt .
+# RUN cd "/root/Ditto" && \
+RUN pip install -r requirements.txt
+
+RUN apt-get install -y python3-tk
+RUN pip install --no-dependencies numpy==1.22.3
+
+
+
+
+ENV PYTHONPATH=/root/Ditto/build/:/usr/local/lib/python3.8/dist-packages/:/root/Ditto/:/root/Ditto/utils3d/
+
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
