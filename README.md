@@ -1,13 +1,17 @@
+## Dataset Placement
 
-Place datasets to ./Ditto/data directory followed by original repo.
+Place datasets to   
+./Ditto/data directory followed by original repo.
 
-export DITTO_PROJECT_NAME="name"
-./BUILD-DOCKER-CONTAINER.sh
-./RUN-DOCKER-CONTAINER.sh
+## build docker
+
+export DITTO_PROJECT_NAME="name"  
+./BUILD-DOCKER-CONTAINER.sh  
+./RUN-DOCKER-CONTAINER.sh  
 docker exec -it "name"_ditto_1 /bin/bash
 
 
-Show demo
+## Show demo
 
-cd Ditto/notebook
+cd Ditto/notebook  
 python3 demo.py
